@@ -4,7 +4,7 @@ run-name: Manual Deploy by ${{ github.actor }} ${{ github.event.inputs.environme
 
 env:
   BUILD_OUTPUT_PATH: "FiveBall/release"
-  BUILD_NAME: "FiveBall"
+  BUILD_NAME: "projects/fiveBall"
   BUILD_RM: "true" # important
 
 on:
@@ -60,11 +60,7 @@ jobs:
         id: repo
         run: |
           TIMESTAMP=$(date +%Y%m%d%H%M%S)
-          if [ -n "${{ env.BUILD_NAME }}" ]; then
-            REPO_NAME="${{ env.BUILD_NAME }}"
-          else
-            REPO_NAME=$(echo "${{ github.repository }}" | cut -d'/' -f2)
-          fi
+          REPO_NAME=$(echo "${{ github.repository }}" | tr '/' '_')
           DOWNLOAD_DIST_NAME="${REPO_NAME}-${TIMESTAMP}"
 
           echo "download_dist_name=$DOWNLOAD_DIST_NAME" >> $GITHUB_OUTPUT
