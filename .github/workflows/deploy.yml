@@ -4,7 +4,7 @@ run-name: Manual Deploy by ${{ github.actor }} ${{ github.event.inputs.environme
 
 env:
   BUILD_OUTPUT_PATH: "FiveBall/release"
-  BUILD_NAME: "projects/fiveball"
+  BUILD_NAME: "portal/fiveball"
   BUILD_RM: "true" # important
 
 on:
